@@ -20,6 +20,39 @@ h1 {
   font-weight: 700;
 }
 
+.live.past {
+  font-size: 90%;
+}
+
+.live.past h2 {
+  font-size: calc(
+    var(--base-fontsize) * var(--header-scale) * var(--header-scale)
+  );
+}
+
+.live.past h3 {
+  font-size: calc(
+    var(--base-fontsize) * var(--header-scale)
+  );
+  margin-bottom: 0;
+}
+
+.live.past h4 {
+  font-size: calc(
+    var(--base-fontsize) * 0.9
+  );
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.live.past h5 {
+  font-size: calc(
+    var(--base-fontsize) * 0.85
+  );
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
 img {
   opacity: 1;
 }
