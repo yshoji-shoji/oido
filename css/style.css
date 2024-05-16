@@ -2,6 +2,15 @@ body {
   background-color: rgb(250, 215, 223);
   font-family: "Noto Serif JP", serif;
   color: rgb(12, 12, 12);
+  max-width: none;
+  padding: 0;
+  width: 100%;
+}
+
+main {
+  max-width: 45rem;
+  margin: auto;
+  padding: 0 0.5rem;
 }
 
 h1 {
@@ -59,4 +68,31 @@ img {
 
 figcaption {
   color: rgb(20, 20, 20);
+}
+
+footer {
+  opacity: .75;
+  margin-top: 7rem;
+  margin-bottom: 0;
+  padding: 6rem 0;
+  color: inherit;
+  background-image: url(../img/footer-background.jpg);
+  background-size: 80%;
+  background-size: cover;
+  background-position: 50% 30%;
+}
+
+footer .logo {
+  font-size: 1000%;
+}
+
+@media (max-width: 767px) { 
+  footer .logo {
+    font-size: 500%;
+  }
+}
+
+
+footer .symbol {
+  font-size: 300%;
 }
