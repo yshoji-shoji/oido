@@ -13,7 +13,7 @@ export const useLiveData = () => {
       'Content-Type': 'application/json',
       'X-MICROCMS-API-KEY': import.meta.env.VITE_API_KEY as string,
     });
-    const response = await fetch(`${import.meta.env.VITE_API_URL}live`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}live?limit=100`, {
       headers,
     });
     const data = await response.json();
