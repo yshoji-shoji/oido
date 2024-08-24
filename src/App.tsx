@@ -6,18 +6,20 @@ import { Profile } from "./components/Profile"
 import "./css/style.css"
 import { random } from "./utils/random"
 
-function App() {
-  const [style, setStyle] = useState<React.CSSProperties | undefined>(undefined)
-  const filter = useCallback(() => {
-    const filterPatterns = [
-      { filter: "blur(8px)" },
-      { filter: "contrast(400%)" },
-      { filter: "grayscale(80%)" },
-      { filter: "hue-rotate(90deg)" },
-      { filter: "drop-shadow(16px 16px 20px red) invert(75%)" },
-      undefined,
-    ]
+const filterPatterns = [
+  { filter: "blur(8px)" },
+  { filter: "contrast(400%)" },
+  { filter: "grayscale(80%)" },
+  { filter: "hue-rotate(90deg)" },
+  { filter: "drop-shadow(16px 16px 20px red) invert(75%)" },
+  undefined,
+]
 
+function App() {
+  const [style, setStyle] = useState<React.CSSProperties | undefined>(
+    filterPatterns[random(6)]
+  )
+  const filter = useCallback(() => {
     setStyle(filterPatterns[random(6)])
   }, [])
 

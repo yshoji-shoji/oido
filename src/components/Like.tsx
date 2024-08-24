@@ -5,7 +5,7 @@ type Props = {
 }
 
 export const Like = ({ filter }: Props) => {
-  const initialCount = random(1000)
+  const count = random(1000)
 
   return (
     <section className="like">
@@ -14,7 +14,7 @@ export const Like = ({ filter }: Props) => {
         <img src="./img/thumbs-up.svg" alt="" />
       </div>
       <div id="like-count-display" className="like-count-display">
-        {initialCount}
+        {count}
       </div>
     </section>
   )
