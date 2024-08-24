@@ -1,10 +1,26 @@
-import { Footer } from './components/Footer';
-import { Like } from './components/Like';
-import { Live } from './components/Live';
-import { Profile } from './components/Profile';
-import './css/style.css';
+import { useCallback, useState } from "react"
+import { Footer } from "./components/Footer"
+import { Like } from "./components/Like"
+import { Live } from "./components/Live"
+import { Profile } from "./components/Profile"
+import "./css/style.css"
+import { random } from "./utils/random"
 
 function App() {
+  const [style, setStyle] = useState<React.CSSProperties | undefined>(undefined)
+  const filter = useCallback(() => {
+    const filterPatterns = [
+      { filter: "blur(8px)" },
+      { filter: "contrast(400%)" },
+      { filter: "grayscale(80%)" },
+      { filter: "hue-rotate(90deg)" },
+      { filter: "drop-shadow(16px 16px 20px red) invert(75%)" },
+      undefined,
+    ]
+
+    setStyle(filterPatterns[random(6)])
+  }, [])
+
   return (
     <>
       <main>
@@ -12,12 +28,12 @@ function App() {
         <section>
           <Profile />
           <Live />
-          <Like />
+          <Like filter={filter} />
         </section>
       </main>
-      <Footer />
+      <Footer style={style} />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
