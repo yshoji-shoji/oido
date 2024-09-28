@@ -14,6 +14,7 @@ export const Live = () => {
         {comingLives.map((live) => (
           <ComingLiveItem key={live.id} live={live} />
         ))}
+        {comingLives.length === 0 && <p>しばらくおやすみです</p>}
       </section>
       <section className="live past">
         <h2>Past Live</h2>
