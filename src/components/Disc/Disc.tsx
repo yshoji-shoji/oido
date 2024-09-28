@@ -2,7 +2,6 @@ import { useDiskData } from '../../hooks/useDiskData';
 
 export const Disc = () => {
   const { disks } = useDiskData();
-  console.log(disks);
 
   return (
     <>

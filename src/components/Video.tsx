@@ -3,8 +3,6 @@ import { useVideoData } from '../hooks/useVideoData';
 export const Video = () => {
   const { videos } = useVideoData();
 
-  console.log(videos);
-
   return (
     <section>
       <div>
