@@ -11,7 +11,12 @@ export const Disc = () => {
           <h3>{disk.title}</h3>
           <div style={{ display: 'flex' }}>
             {disk.image.map((img) => (
-              <img src={img.url} style={{ width: '45%', marginRight: '2%' }} />
+              <a href={disk.link} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={img.url}
+                  style={{ width: '45%', marginRight: '2%' }}
+                />
+              </a>
             ))}
           </div>
 
