@@ -31,17 +31,6 @@ function App() {
         <h1>おいど</h1>
         <section>
           <Profile />
-          <div>
-            <div className="video">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/p55_AXCpyZg"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </div>
-          </div>
           <Disc />
           <Video />
           <Live />

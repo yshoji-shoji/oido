@@ -7,4 +7,5 @@ export type Disk = {
   }[];
   description?: string;
   link?: string;
+  videoId?: string;
 };
