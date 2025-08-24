@@ -31,15 +31,17 @@ export const Disc = () => {
                 詳細を見る
               </a>
             )}
-            <div className="video" style={{ marginTop: '10px' }}>
-              <iframe
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${disk.videoId}`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </div>
+            {disk.videoId && (
+              <div className="video" style={{ marginTop: '10px' }}>
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${disk.videoId}`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              </div>
+            )}
           </div>
         ))}
       </div>
