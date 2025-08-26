@@ -7,6 +7,9 @@ import './css/style.css';
 import { random } from './utils/random';
 import { Disc } from './components/Disc/Disc';
 import { Video } from './components/Video';
+import { PastLiveItem } from './components/Live/PastLiveItem';
+import { useLiveData } from './hooks/useLiveData';
+import { processLiveData } from './utils/processLiveData';
 
 const filterPatterns = [
   { filter: 'blur(8px)' },
@@ -24,6 +27,8 @@ function App() {
   const filter = useCallback(() => {
     setStyle(filterPatterns[random(6)]);
   }, []);
+  const { lives } = useLiveData();
+  const { pastLives } = processLiveData(lives);
 
   return (
     <>
@@ -31,9 +36,15 @@ function App() {
         <h1>おいど</h1>
         <section>
           <Profile />
+          <Live />
           <Disc />
           <Video />
-          <Live />
+          <section className="live past">
+            <h2>Past Live</h2>
+            {pastLives.map((live) => (
+              <PastLiveItem key={live.id} live={live} />
+            ))}
+          </section>
           <Like filter={filter} />
         </section>
       </main>
