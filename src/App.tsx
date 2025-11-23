@@ -36,40 +36,40 @@ function App() {
         <header>
           <h1>おいど</h1>
         </header>
-        
+
         <section>
           <Profile />
         </section>
-        
+
         <div className="section-separator">〰️</div>
-        
+
         <section>
           <Live />
         </section>
-        
+
         <div className="section-separator">〰️</div>
-        
+
         <section>
           <Disc />
         </section>
-        
+
         <div className="section-separator">〰️</div>
-        
+
         <section>
           <Video />
         </section>
-        
+
         <div className="section-separator">〰️</div>
-        
+
         <section className="live past">
           <h2>Past Live</h2>
           {pastLives.map((live) => (
             <PastLiveItem key={live.id} live={live} />
           ))}
         </section>
-        
+
         <div className="section-separator">〰️</div>
-        
+
         <section>
           <Like filter={filter} />
         </section>

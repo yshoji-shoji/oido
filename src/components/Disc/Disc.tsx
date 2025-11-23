@@ -15,7 +15,6 @@ export const Disc = () => {
                 <a href={disk.link} target="_blank" rel="noopener noreferrer">
                   <img
                     src={img.url}
-                    style={{ width: '45%', marginRight: '2%' }}
                   />
                 </a>
               ))}
