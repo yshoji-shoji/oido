@@ -8,7 +8,7 @@ export const Like = ({ filter }: Props) => {
   const count = random(1000)
 
   return (
-    <section className="like">
+    <section className="like-section">
       <h2>Love me tender</h2>
       <div id="like-button" className="like-icon" onClick={() => filter()}>
         <img src="./img/thumbs-up.svg" alt="" />
