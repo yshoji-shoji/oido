@@ -7,7 +7,7 @@ export const Profile = () => (
         <source srcSet="./img/profile.jpg" media="(orientation: portrait)" />
         <img src="./img/profile.jpg" alt="" />
         <figcaption>
-          L -&gt; R） ドラム Sugiura / ベース Okue / ギターとボーカル Shoji
+          L -&gt; R） ベース Nishidate / ドラム Sugiura / ギターとボーカル Shoji
         </figcaption>
       </picture>
     </section>
