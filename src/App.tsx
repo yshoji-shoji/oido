@@ -1,15 +1,14 @@
 import { useCallback, useState } from 'react';
+import { Disc } from './components/Disc/Disc';
 import { Footer } from './components/Footer';
 import { Like } from './components/Like';
-import { Live } from './components/Live';
+import { Live, PastLives } from './components/Live';
 import { Profile } from './components/Profile';
-import './css/style.css';
-import { random } from './utils/random';
-import { Disc } from './components/Disc/Disc';
+import { Section } from './components/Section';
 import { Video } from './components/Video';
-import { PastLiveItem } from './components/Live/PastLiveItem';
 import { useLiveData } from './hooks/useLiveData';
 import { processLiveData } from './utils/processLiveData';
+import { random } from './utils/random';
 
 const filterPatterns = [
   { filter: 'blur(8px)' },
@@ -20,59 +19,60 @@ const filterPatterns = [
   undefined,
 ];
 
+const NAV = [
+  { id: 'live', label: 'ライブ' },
+  { id: 'profile', label: 'プロフィール' },
+  { id: 'disc', label: '作品' },
+  { id: 'video', label: '映像' },
+  { id: 'past', label: 'これまで' },
+];
+
 function App() {
   const [style, setStyle] = useState<React.CSSProperties | undefined>(
-    filterPatterns[random(6)]
+    filterPatterns[random(filterPatterns.length)]
   );
   const filter = useCallback(() => {
-    setStyle(filterPatterns[random(6)]);
+    setStyle(filterPatterns[random(filterPatterns.length)]);
   }, []);
   const { lives } = useLiveData();
-  const { pastLives } = processLiveData(lives);
+  const { comingLives, pastLives } = processLiveData(lives);
 
   return (
     <>
       <main className="container">
-        <header>
-          <h1>おいど</h1>
+        <header className="hero">
+          <h1 className="logo">おいど</h1>
+          <figure className="hero-figure">
+            <img src="./img/sea.jpg" alt="" />
+            <figcaption>oido is a band. — since autumn 2023</figcaption>
+          </figure>
         </header>
 
-        <section>
-          <Profile />
-        </section>
-
-        <div className="section-separator">〰️</div>
-
-        <section>
-          <Live />
-        </section>
-
-        <div className="section-separator">〰️</div>
-
-        <section>
-          <Disc />
-        </section>
-
-        <div className="section-separator">〰️</div>
-
-        <section>
-          <Video />
-        </section>
-
-        <div className="section-separator">〰️</div>
-
-        <section className="live past">
-          <h2>Past Live</h2>
-          {pastLives.map((live) => (
-            <PastLiveItem key={live.id} live={live} />
+        <nav className="nav" aria-label="ページ内リンク">
+          {NAV.map(({ id, label }) => (
+            <a key={id} href={`#${id}`}>
+              {label}
+            </a>
           ))}
-        </section>
+        </nav>
 
-        <div className="section-separator">〰️</div>
+        <Section id="live" label="Live">
+          <Live lives={comingLives} />
+        </Section>
+        <Section id="profile" label="Profile">
+          <Profile />
+        </Section>
+        <Section id="disc" label="Discography">
+          <Disc />
+        </Section>
+        <Section id="video" label="Video">
+          <Video />
+        </Section>
+        <Section id="past" label="Past Live">
+          <PastLives lives={pastLives} />
+        </Section>
 
-        <section>
-          <Like filter={filter} />
-        </section>
+        <Like filter={filter} />
       </main>
       <Footer style={style} />
     </>

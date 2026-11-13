@@ -1,21 +1,25 @@
-import { random } from "../utils/random"
+import { useState } from 'react';
+import { random } from '../utils/random';
 
 type Props = {
-  filter: () => void
-}
+  filter: () => void;
+};
 
 export const Like = ({ filter }: Props) => {
-  const count = random(1000)
+  const [count, setCount] = useState(() => random(1000));
+
+  const handleClick = () => {
+    setCount((c) => c + 1);
+    filter();
+  };
 
   return (
-    <section className="like-section">
-      <h2>Love me tender</h2>
-      <div id="like-button" className="like-icon" onClick={() => filter()}>
+    <div className="like">
+      <button type="button" className="like-button" onClick={handleClick}>
+        Love me tender
         <img src="./img/thumbs-up.svg" alt="" />
-      </div>
-      <div id="like-count-display" className="like-count-display">
-        {count}
-      </div>
-    </section>
-  )
-}
+      </button>
+      <output className="like-count">{count} likes</output>
+    </div>
+  );
+};

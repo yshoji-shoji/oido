@@ -1,25 +1,29 @@
 import { Live } from '../../types/live';
 import { getCostars } from '../../utils/getCostars';
-import { getDate } from '../../utils/getDate';
+import { LiveDate } from './LiveDate';
 
 export const PastLiveItem = ({ live }: { live: Live }) => {
-  const date = new Date(live.date);
-  const { place, costar, option } = live;
+  const { place, title, costar, option } = live;
+  const details = [title, costar && `共演: ${getCostars(costar)}`]
+    .filter(Boolean)
+    .join(' · ');
 
   return (
-    <section>
-      <h3>{getDate(date)}</h3>
-      <h4>{place}</h4>
-      {costar && <p>共演: {getCostars(costar)}</p>}
-      {option && (
-        <p>
-          {option.includes('small:') ? (
-            <small>{option.replace('small:', '')}</small>
-          ) : (
-            option
-          )}
-        </p>
-      )}
-    </section>
+    <article className="live-row">
+      <LiveDate date={live.date} />
+      <div className="live-body">
+        <h3>{place}</h3>
+        {details && <p>{details}</p>}
+        {option && (
+          <p>
+            {option.includes('small:') ? (
+              <small>{option.replace('small:', '')}</small>
+            ) : (
+              option
+            )}
+          </p>
+        )}
+      </div>
+    </article>
   );
 };

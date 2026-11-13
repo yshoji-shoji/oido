@@ -1,49 +1,41 @@
 import { useDiskData } from '../../hooks/useDiskData';
+import { YouTube } from '../YouTube';
 
 export const Disc = () => {
   const { disks } = useDiskData();
 
   return (
-    <>
-      <h2>Discography</h2>
-      <div>
-        {disks.map((disk) => (
-          <div key={disk.title}>
+    <div className="disc-list">
+      {disks.map((disk) => (
+        <article key={disk.title} className="disc">
+          <div className="disc-jackets">
+            {disk.image.map((img) => (
+              <img key={img.url} src={img.url} alt={disk.title} />
+            ))}
+          </div>
+          <div className="disc-body">
             <h3>{disk.title}</h3>
-            <div style={{ display: 'flex' }}>
-              {disk.image.map((img) => (
-                <a href={disk.link} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src={img.url}
-                  />
-                </a>
-              ))}
-            </div>
-
-            <div style={{ marginTop: '20px' }}>
-              {disk.description?.split('\n').map((item) => (
-                <p style={{ margin: '2px' }}>{item}</p>
-              ))}
-            </div>
+            {disk.description?.split('\n').map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
             {disk.link && (
-              <a href={disk.link} target="_blank" rel="noopener noreferrer">
-                詳細を見る
+              <a
+                className="link-button"
+                href={disk.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                詳細を見る ↗
               </a>
             )}
-            {disk.videoId && (
-              <div className="video" style={{ marginTop: '10px' }}>
-                <iframe
-                  width="560"
-                  height="315"
-                  src={`https://www.youtube.com/embed/${disk.videoId}`}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                ></iframe>
-              </div>
-            )}
           </div>
-        ))}
-      </div>
-    </>
+          {disk.videoId && (
+            <div className="disc-video">
+              <YouTube videoId={disk.videoId} title={disk.title} />
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
   );
 };

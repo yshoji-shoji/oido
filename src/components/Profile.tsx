@@ -1,15 +1,11 @@
 export const Profile = () => (
   <>
-    <h2>Profile</h2>
-    <section>
-      <p>2023年秋に結成。ぼちぼちやってます。</p>
-      <picture>
-        <source srcSet="./img/profile.jpg" media="(orientation: portrait)" />
-        <img src="./img/profile.jpg" alt="" />
-        <figcaption>
-          L -&gt; R） ベース Nishidate / ドラム Sugiura / ギターとボーカル Shoji
-        </figcaption>
-      </picture>
-    </section>
+    <p>2023年秋に結成。ぼちぼちやってます。</p>
+    <figure>
+      <img src="./img/profile.jpg" alt="おいどのメンバー写真" />
+      <figcaption>
+        左から ベース Nishidate / ドラム Sugiura / ギターとボーカル Shoji
+      </figcaption>
+    </figure>
   </>
 );
